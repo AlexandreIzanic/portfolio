@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import LinkedInLogo from "../assets/linkedInLogo.webp";
+import FinotorScreen from "../assets/finotor.jpg";
+import GpleadsScreen from "../assets/gpleads.jpg";
+import AskformScreen from "../assets/askform.jpg";
+import SpotTogetherScreen from "../assets/spotTogether.jpg";
+---
+
+<Layout title="Welcome to Astro.">
+  <main
+    class="bg-white max-w-4xl px-20 m-auto mt-14 flex flex-col gap-28 mb-40"
+  >
+    <section class="flex flex-col gap-3">
+      <div class="font-bold text-4xl">Hey, I'm Alex</div>
+
+      <p class="font-medium">
+        I'm a freelance fullstack developer, building professional user
+        interface and complex applications. <br /> I'm currently cofound askform,
+        where I help companies organize their external communications towards their
+        employees and their requests through tickets.
+      </p>
+
+      <div class="flex gap-3">
+        <button
+          class="px-4 py-2 bg-black text-white rounded-lg font-medium hover:bg-black/90"
+        >
+          <a href="https://calendly.com/alexandre-izanic/meet" target="_blank">
+            Schedule a call
+          </a>
+        </button>
+        <div class="border rounded-lg w-auto hover:bg-slate-100">
+          <a
+            href="https://www.linkedin.com/in/alexandre-izanic/"
+            target="_blank"
+          >
+            <img src={LinkedInLogo.src} class="h-9 w-9" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex flex-col gap-5">
+      <h2 class="font-bold text-4xl">My best work</h2>
+      <div class="grid grid-cols-2 gap-4">
+        <Card
+          title="Askform"
+          img={AskformScreen.src}
+          body="Cofounder of askform, a ticketing system for companies"
+          tags={["React", "Supabase"]}
+        />
+
+        <Card
+          title="GpLeads"
+          img={GpleadsScreen.src}
+          body="From strach full stack application for a lead generation company"
+          tags={["React", "Node", "MySQL", "Stripe", "MapBox"]}
+        />
+
+        <Card
+          title="Le Stud - Startup Studio"
+          img={FinotorScreen.src}
+          body="Principally work on project Finotor as a fullstack developer"
+          tags={["React", "Node", "PostgreSQL", "Mixpanel", "i18n"]}
+        />
+
+        <Card
+          title="SpotTogether"
+          img={SpotTogetherScreen.src}
+          body="Organize events with your friends"
+          tags={["React", "Supabase", "MapBox"]}
+        />
+      </div>
+    </section>
+  </main></Layout
+>

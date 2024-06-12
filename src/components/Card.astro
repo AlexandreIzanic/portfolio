@@ -1,0 +1,35 @@
+---
+import { imageConfig } from "astro:assets";
+
+interface Props {
+  title: string;
+  body: string;
+  href?: string;
+  img: string;
+  tags: string[];
+}
+
+const { href, title, body, img, tags } = Astro.props;
+---
+
+<li class="flex border h-auto w-auto p-4 rounded-lg">
+  <a href={href} class="w-full">
+    <img src={img} class="rounded-lg w-auto" />
+    <h2 class="font-bold text-xl pt-3">
+      {title}
+    </h2>
+    <p>
+      {body}
+    </p>
+    <ul class="flex flex-wrap">
+      {
+        tags &&
+          tags.map((tag) => (
+            <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2">
+              {tag}
+            </li>
+          ))
+      }
+    </ul>
+  </a>
+</li>
