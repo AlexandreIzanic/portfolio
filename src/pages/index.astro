@@ -2,13 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import LinkedInLogo from "../assets/linkedInLogo.webp";
+import GithubLogo from "../assets/githubLogo.png";
 import FinotorScreen from "../assets/finotor.jpg";
 import GpleadsScreen from "../assets/gpleads.jpg";
 import AskformScreen from "../assets/askform.jpg";
 import SpotTogetherScreen from "../assets/spotTogether.jpg";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Alexandre Izanic | Portfolio">
   <main
     class="bg-white max-w-4xl px-20 m-auto mt-14 flex flex-col gap-28 mb-40"
   >
@@ -30,14 +31,21 @@ import SpotTogetherScreen from "../assets/spotTogether.jpg";
             Schedule a call
           </a>
         </button>
-        <div class="border rounded-lg w-auto hover:bg-slate-100">
-          <a
-            href="https://www.linkedin.com/in/alexandre-izanic/"
-            target="_blank"
+        <a href="https://www.linkedin.com/in/alexandre-izanic/" target="_blank">
+          <div
+            class="border rounded-lg w-auto flex justify-center items-center hover:bg-slate-100 p-2"
           >
-            <img src={LinkedInLogo.src} class="h-9 w-9" />
-          </a>
-        </div>
+            <img src={LinkedInLogo.src} class="h-auto w-8" />
+          </div>
+        </a>
+
+        <a href="https://github.com/AlexandreIzanic" target="_blank">
+          <div
+            class="border rounded-lg w-auto flex justify-center items-center hover:bg-slate-100 p-3 h-full"
+          >
+            <img src={GithubLogo.src} class="h-auto w-5" />
+          </div>
+        </a>
       </div>
     </section>
 
