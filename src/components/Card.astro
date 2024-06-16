@@ -1,5 +1,6 @@
 ---
 import { imageConfig } from "astro:assets";
+import Link from "../assets/link.png";
 
 interface Props {
   title: string;
@@ -7,13 +8,14 @@ interface Props {
   href?: string;
   img: string;
   tags: string[];
+  link?: string;
 }
 
-const { href, title, body, img, tags } = Astro.props;
+const { href, title, body, img, tags, link } = Astro.props;
 ---
 
-<li class="flex border h-auto w-auto p-4 rounded-lg">
-  <a href={href} class="w-full">
+<li class="flex flex-col border h-auto w-auto p-4 rounded-lg">
+  <a href={href} class="w-full flex flex-col">
     <img src={img} class="rounded-lg w-auto" />
     <h2 class="font-bold text-xl pt-3">
       {title}
@@ -32,4 +34,14 @@ const { href, title, body, img, tags } = Astro.props;
       }
     </ul>
   </a>
+  {
+    link && (
+      <a href={link} class="text-blue-500  w-9  ">
+        <img
+          src={Link.src}
+          class=" w-auto p-3 rounded-lg border h-9 hover:bg-slate-200 mt-2"
+        />
+      </a>
+    )
+  }
 </li>
