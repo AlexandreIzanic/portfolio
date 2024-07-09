@@ -9,9 +9,10 @@ interface Props {
   img: string;
   tags: string[];
   link?: string;
+  role: string;
 }
 
-const { href, title, body, img, tags, link } = Astro.props;
+const { href, title, body, img, tags, link, role } = Astro.props;
 ---
 
 <li class="flex flex-col border h-auto w-auto p-4 rounded-lg">
@@ -23,11 +24,14 @@ const { href, title, body, img, tags, link } = Astro.props;
     <p>
       {body}
     </p>
+    <div>
+      <span class="text-gray-500 text-sm">{role}</span>
+    </div>
     <ul class="flex flex-wrap">
       {
         tags &&
           tags.map((tag) => (
-            <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2">
+            <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
               {tag}
             </li>
           ))
