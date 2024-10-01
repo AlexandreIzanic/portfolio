@@ -18,15 +18,28 @@ const { href, title, body, img, tags, link, role, iframeLink } = Astro.props;
 
 <li class="flex flex-col border h-auto w-auto p-4 rounded-lg">
   <a href={href} class="w-full flex flex-col">
-
-    {iframeLink &&     
-    <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;" >
-      <iframe id="yr4mn97s4r" src={iframeLink} width="100%" height="100%" style="overflow:hidden;position:absolute;border:none" scrolling="no" allow="clipboard-read; clipboard-write" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>
-    </div>}
-
+    {
+      iframeLink && (
+        <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;">
+          <iframe
+            id="yr4mn97s4r"
+            src={iframeLink}
+            width="100%"
+            height="100%"
+            style="overflow:hidden;position:absolute;border:none"
+            scrolling="no"
+            allow="clipboard-read; clipboard-write"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+            allowtransparency="true"
+          />
+        </div>
+      )
+    }
 
     <img src={img} class="rounded-lg w-auto" />
-   
+
     <h2 class="font-bold text-xl pt-3">
       {title}
     </h2>
