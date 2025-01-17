@@ -15,6 +15,7 @@ import FinotorBg from "../assets/screenSaas/FinotorBg.png";
 import GpLeadsBg from "../assets/screenSaas/GpLeadsBg.png";
 import AskformBg from "../assets/screenSaas/AskformBg.png";
 import viaTransitBg from "../assets/screenSaas/viaTransitBg.png";
+import CardPrimary from "../components/CardPrimary.astro";
 const AskupDemo = `
 <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;">
 <iframe id="yr4mn97s4r" src="https://app.guideflow.com/embed/yr4mn97s4r" width="100%" height="100%" style="overflow:hidden;position:absolute;border:none" scrolling="no" allow="clipboard-read; clipboard-write" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>
@@ -63,7 +64,28 @@ const AskupDemo = `
       </div>
 
       <div class="flex gap"></div>
-      <Card
+      <CardPrimary
+        title="Askform"
+        body="Ticketing system for companies"
+        role="Cofounder & Fullstack Developer"
+        tags={[
+          "React",
+          "Typescript",
+          "Supabase",
+          "Zod",
+          "Node",
+          "Stripe",
+          "Zustand",
+          "Vitest",
+          "Astro",
+          "Github Actions",
+          "Vercel",
+          "Redis",
+          "Strapi",
+          "Plausible",
+        ]}
+      />
+      <!-- <Card
         iframeLink="https://app.guideflow.com/embed/yr4mn97s4r"
         title="Askform"
         body="Ticketing system for companies"
@@ -80,8 +102,11 @@ const AskupDemo = `
           "Astro",
           "Github Actions",
           "Vercel",
+          "Redis",
+          "Strapi",
+          "Plausible",
         ]}
-      />
+      /> -->
     </section>
 
     <section class="flex flex-col gap-5">

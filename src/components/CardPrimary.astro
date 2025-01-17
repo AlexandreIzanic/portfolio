@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  href?: string;
+  img?: string;
+  tags: string[];
+  link?: string;
+  role: string;
+}
+
+const { href, title, body, img, tags, link, role } = Astro.props;
+
+import VideoAnalytics from "../assets/Askform-analytics.mp4";
+import VideoNewView from "../assets/Askform-newView.mp4";
+import VideoColumn from "../assets/Askform-column.mp4";
+import VideoGoal from "../assets/Askform-goal.mp4";
+
+const sourcesVideos = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
+---
+
+<li class="flex flex-col border h-fit w-auto p-4 rounded-lg">
+  <h2 class="font-bold text-xl pt-3">{title}</h2>
+  <p>{body}</p>
+  <span class="text-gray-500 text-sm">{role}</span>
+
+  <ul class="flex flex-wrap mb-4">
+    {
+      tags &&
+        tags.map((tag) => (
+          <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
+            {tag}
+          </li>
+        ))
+    }
+  </ul>
+
+  <a href={href} class="w-full h-fit flex flex-col">
+    <img src={img} class="rounded-lg w-auto" />
+
+    <div class="grid grid-cols-2 gap-4 h-fit">
+      {
+        sourcesVideos.map((videoSrc, index) => (
+          <div class="aspect-w-16 aspect-h-9 h-full rounded-lg">
+            <video loop autoplay class="rounded-lg w-full h-full">
+              <source src={videoSrc} type="video/mp4" />
+              Ton navigateur ne supporte pas la balise vidéo.
+            </video>
+          </div>
+        ))
+      }
+    </div>
+  </a>
+</li>
