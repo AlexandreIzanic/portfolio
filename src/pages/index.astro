@@ -57,17 +57,15 @@ const AskupDemo = `
         </div>
       </div>
       <p class="font-medium text-sm text-left">
-        I'm a freelance <span class="font-black text-lg"
-          >FullStack developer</span
-        >, building professional user interface and complex applications. <br />
-        I'm currently cofound askform, where I help companies organize their external
-        communications towards their employees and their requests through tickets.
+        I'm a freelance <span class="font-bold">FullStack developer</span>, <br
+        />
+        Specializing in building professional user interfaces and complex applications
+        with a<span class="font-bold"> user-centric</span> approach.
       </p>
 
       <div class="flex gap"></div>
       <CardPrimary
         title="Askform"
-        body="Ticketing system for companies"
         role="Cofounder & Fullstack Developer"
         tags={[
           "React",
@@ -85,7 +83,25 @@ const AskupDemo = `
           "Strapi",
           "Plausible",
         ]}
-      />
+      >
+        <span slot="body">
+          Development of Askform, a platform that allows companies to <span
+            class="font-bold">centralize</span
+          >
+          and simplify <span class="font-bold"
+            >request management workflows.</span
+          >
+        </span>
+        <span slot="description" class="text-base text-gray-600">
+          • Espaces de travail pour centraliser les demandes clients et
+          configurer des <span class="underline"
+            >workflows relatifs à des actions ou membres de l'équipe</span
+          >
+          <br />• <span class="underline">Analytiques de performances</span> des
+          équipes et des formulaires individuels
+        </span>
+      </CardPrimary>
+
       <!-- <Card
         iframeLink="https://app.guideflow.com/embed/yr4mn97s4r"
         title="Askform"
