@@ -21,17 +21,32 @@ import type { HTMLAttributes } from "astro/types";
 const sourcesVideos = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
 ---
 
-<li class="flex flex-col gap-1 border h-fit w-auto p-4 rounded-lg">
-  <h2 class="font-bold text-xl pt-3">{title}</h2>
-  <span class="text-gray-500 text-sm">{role}</span>
-  <slot name="body" />
-  <slot name="description" />
+<li class="flex flex-col border h-fit w-auto gap-3 p-4 rounded-lg">
+  <div class="w-full flex justify-between items-center">
+    <div>
+      <h2 class="font-bold text-xl">{title}</h2>
+      <span class="text-gray-500 text-sm">{role}</span>
+    </div>
+
+    <a href={link} target="_blank">
+      <button
+        class="px-4 py-1 h-fit bg-gray-100 text-gray-800 border-gray-400 border rounded-lg font-medium hover:bg-black/90 hover:bg-gray-200 transition duration-300 ease-in-out text-sm"
+      >
+        Visit website
+      </button>
+    </a>
+  </div>
+  <div class="w-full border"></div>
+  <div>
+    <slot name="body" />
+    <slot name="description" />
+  </div>
 
   <ul class="flex flex-wrap mb-4">
     {
       tags &&
         tags.map((tag) => (
-          <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
+          <li class="bg-neutral-50 text-gray-300 rounded border px-3 py-[1px] text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
             {tag}
           </li>
         ))

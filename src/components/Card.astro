@@ -17,7 +17,7 @@ const { href, title, body, img, tags, link, role, iframeLink } = Astro.props;
 ---
 
 <li class="flex flex-col border h-auto w-auto p-4 rounded-lg">
-  <a href={href} class="w-full flex flex-col">
+  <a href={href} class="w-full flex flex-col gap-2">
     {
       iframeLink && (
         <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;">
@@ -40,34 +40,37 @@ const { href, title, body, img, tags, link, role, iframeLink } = Astro.props;
 
     <img src={img} class="rounded-lg w-auto" />
 
-    <h2 class="font-bold text-xl pt-3">
-      {title}
-    </h2>
-    <p>
-      {body}
-    </p>
-    <div>
+    <div class="">
+      <h2 class="font-bold text-xl pt-3">
+        {title}
+      </h2>
       <span class="text-gray-500 text-sm">{role}</span>
     </div>
-    <ul class="flex flex-wrap">
-      {
-        tags &&
-          tags.map((tag) => (
-            <li class="bg-neutral-50 text-gray-800 rounded border px-2 py-1 text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
-              {tag}
-            </li>
-          ))
-      }
-    </ul>
+    <div class="w-full border"></div>
+    <div>
+      <slot name="body" />
+      <slot name="description" />
+
+      <ul class="flex flex-wrap">
+        {
+          tags &&
+            tags.map((tag) => (
+              <li class="bg-neutral-50 text-gray-300 rounded border px-3 py-[1px] text-sm mr-2 mt-2 hover:bg-neutral-200 transition-all">
+                {tag}
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+    {
+      link && (
+        <a href={link} class="text-blue-500  w-9  ">
+          <img
+            src={Link.src}
+            class=" w-auto p-3 rounded-lg border h-9 hover:bg-slate-200 mt-2"
+          />
+        </a>
+      )
+    }
   </a>
-  {
-    link && (
-      <a href={link} class="text-blue-500  w-9  ">
-        <img
-          src={Link.src}
-          class=" w-auto p-3 rounded-lg border h-9 hover:bg-slate-200 mt-2"
-        />
-      </a>
-    )
-  }
 </li>
