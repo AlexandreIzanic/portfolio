@@ -11,6 +11,7 @@ import GpLeadsBg from "../assets/screenSaas/GpLeadsBg.png";
 
 import viaTransitBg from "../assets/screenSaas/viaTransitBg.png";
 import CardPrimary from "../components/CardPrimary.astro";
+import CardUpmail from "../components/CardUpmail.astro";
 const AskupDemo = `
 <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;">
 <iframe id="yr4mn97s4r" src="https://app.guideflow.com/embed/yr4mn97s4r" width="100%" height="100%" style="overflow:hidden;position:absolute;border:none" scrolling="no" allow="clipboard-read; clipboard-write" webkitallowfullscreen mozallowfullscreen allowfullscreen allowtransparency="true"></iframe>
@@ -128,6 +129,38 @@ const AskupDemo = `
     </section>
 
     <section class="flex flex-col gap-5">
+      <CardUpmail
+        title="Upmail"
+        img=""
+        role="Freelance Fullstack Developer"
+        tags={[
+          "React",
+          "Typescript",
+          "Langchain",
+          "Mistral API",
+          "OpenAI API",
+          "Node",
+          "Supabase",
+          "Zod",
+          "Vercel",
+        ]}
+      >
+        <div slot="body" class="font-semibold">
+          Development of an AI-boosted email client for professionals
+        </div>
+        <div slot="description" class="font-medium text-gray-400 ml-4 mb-2">
+          • AI agent integration
+          <span class="underline">Langchain(Mistral AI API)</span> to categorize
+          emails
+          <br />
+          • <span class="underline">AI draft writing </span> with the possibility
+          of schedule the sending
+          <br />
+          • Workflow trigger by new email with<span class="underline"
+            >Gmail API</span
+          > and <span class="underline">GCP PUB / SUB</span>
+        </div></CardUpmail
+      >
       <div class="grid md:grid-cols-2 gap-4">
         <Card
           title="Le Stud - Startup Studio"
@@ -183,7 +216,8 @@ const AskupDemo = `
           <div slot="description" class="font-medium text-gray-400 ml-4 mb-2">
             • Refactoring of <span class="underline">spaghetti code</span> into a
             cleaner and more maintainable structure <br /> • Migration of the authentication
-            system from <span class="underline">Firebase</span> to
+            system from <span class="underline">Firebase</span>
+            to
             <span class="underline">Supabase</span>
             <br />
             • Migration from Next Pages router to <span class="underline"
@@ -217,5 +251,5 @@ const AskupDemo = `
         /> -->
       </div>
     </section>
-  </main></Layout
->
+  </main>
+</Layout>
