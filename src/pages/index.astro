@@ -9,6 +9,7 @@ import SpotTogetherBg from "../assets/screenSaas/SpotTogether with bg.png";
 import FinotorBg from "../assets/screenSaas/FinotorBg.png";
 import GpLeadsBg from "../assets/screenSaas/GpLeadsBg.png";
 
+import ecole42Logo from "../assets/ecole-42.jpeg";
 import viaTransitBg from "../assets/screenSaas/viaTransitBg.png";
 import CardPrimary from "../components/CardPrimary.astro";
 import CardUpmail from "../components/CardUpmail.astro";
@@ -59,8 +60,27 @@ const AskupDemo = `
           </div>
         </div>
         <p class="font-medium text-sm text-left text-gray-800">
-          I'm a freelance <span class="font-bold">FullStack developer</span>, <br
-          />
+          I'm a freelance <span class="font-bold">FullStack developer</span>
+          and
+          <a
+            href="https://42.fr/"
+            target="_blank"
+            class="inline-flex rounded-lg items-center align-middle mx-1 relative group"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={ecole42Logo.src}
+              alt="École 42"
+              class="h-7 w-auto border rounded-lg hover:opacity-70 transition-opacity"
+            />
+            <span
+              class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap"
+            >
+              School 42
+            </span>
+          </a>
+          <span class="font-bold">student</span>,
+          <br />
           Specializing in building professional user interfaces and complex applications
           with a<span class="font-bold"> user-centric</span> approach.
         </p>
