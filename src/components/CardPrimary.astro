@@ -12,13 +12,13 @@ interface Props {
 
 const { href, title, body, img, tags, link, role, description } = Astro.props;
 
-import VideoAnalytics from "../assets/Askform-analytics.mp4";
-import VideoNewView from "../assets/Askform-newView.mp4";
-import VideoColumn from "../assets/Askform-column.mp4";
-import VideoGoal from "../assets/Askform-goal.mp4";
+import VideoAnalytics from "../assets/Askform-analytics.webp";
+import VideoNewView from "../assets/Askform-newView.webp";
+import VideoColumn from "../assets/Askform-column.webp";
+import VideoGoal from "../assets/Askform-goal.webp";
 import type { HTMLAttributes } from "astro/types";
 
-const sourcesVideos = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
+const sourcesImages = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
 ---
 
 <li class="flex flex-col border h-fit w-auto gap-3 p-4 rounded-lg">
@@ -54,19 +54,56 @@ const sourcesVideos = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
   </ul>
 
   <a href={href} class="w-full h-fit flex flex-col">
-    <img src={img} class="rounded-lg w-auto" />
+    <div class="relative">
+      <div
+        class="absolute inset-0 bg-gray-200 animate-pulse rounded-lg skeleton-placeholder"
+      >
+      </div>
+      <img
+        src={img}
+        class="rounded-lg w-auto relative z-10"
+        loading="lazy"
+        onload="this.previousElementSibling.style.display='none'"
+      />
+    </div>
 
-    <div class="grid grid-cols-2 gap-4 h-fit">
+    <div class="grid grid-cols-2 gap-4 h-fit mt-4">
       {
-        sourcesVideos.map((videoSrc, index) => (
-          <div class="aspect-w-16 aspect-h-9 h-full rounded-lg">
-            <video muted loop autoplay class="rounded-lg w-full h-full">
-              <source src={videoSrc} type="video/mp4" />
-              Ton navigateur ne supporte pas la balise vidéo.
-            </video>
+        sourcesImages.map((imageSrc, index) => (
+          <div class="aspect-w-16 aspect-h-9 h-full rounded-lg relative">
+            <div class="absolute inset-0 bg-gray-200 animate-pulse rounded-lg skeleton-placeholder" />
+            <img
+              src={imageSrc.src}
+              alt={`Askform feature ${index + 1}`}
+              class="rounded-lg w-full h-full object-cover relative z-10"
+              loading="lazy"
+              decoding="async"
+              onload="this.previousElementSibling.style.display='none'"
+            />
           </div>
         ))
       }
     </div>
   </a>
 </li>
+
+<style>
+  .skeleton-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  img {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
