@@ -22,7 +22,7 @@ const sourcesImages = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
 ---
 
 <li class="flex flex-col border h-fit w-auto gap-3 p-4 rounded-lg">
-  <div class="w-full flex justify-between items-center">
+  <div class="w-full flex flex-col gap-2">
     <div>
       <h2 class="font-bold text-xl">{title}</h2>
       <span class="text-gray-500 text-sm">{role}</span>
@@ -61,7 +61,8 @@ const sourcesImages = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
       </div>
       <img
         src={img}
-        class="rounded-lg w-auto relative z-10"
+        class="rounded-lg w-auto relative z-10 cursor-zoom-in"
+        data-zoom-image={img}
         loading="lazy"
         onload="this.previousElementSibling.style.display='none'"
       />
@@ -75,7 +76,8 @@ const sourcesImages = [VideoAnalytics, VideoNewView, VideoColumn, VideoGoal];
             <img
               src={imageSrc.src}
               alt={`Askform feature ${index + 1}`}
-              class="rounded-lg w-full h-full object-cover relative z-10"
+              class="rounded-lg w-full h-full object-cover relative z-10 cursor-zoom-in"
+              data-zoom-image={imageSrc.src}
               loading="lazy"
               decoding="async"
               onload="this.previousElementSibling.style.display='none'"

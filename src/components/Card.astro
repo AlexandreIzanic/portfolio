@@ -20,7 +20,11 @@ const { href, title, body, img, tags, link, role, iframeLink } = Astro.props;
   <a href={href} class="w-full h-full flex flex-col gap-2">
     {
       iframeLink && (
-        <div style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;">
+        <div
+          style="position: relative; padding-bottom:calc(50.18587360594795% + 50px); height: 0;"
+          data-zoom-iframe-src={iframeLink}
+          data-zoom-title={`${title} demo`}
+        >
           <iframe
             id="yr4mn97s4r"
             src={iframeLink}
@@ -29,16 +33,21 @@ const { href, title, body, img, tags, link, role, iframeLink } = Astro.props;
             style="overflow:hidden;position:absolute;border:none"
             scrolling="no"
             allow="clipboard-read; clipboard-write"
-            webkitallowfullscreen
-            mozallowfullscreen
-            allowfullscreen
-            allowtransparency="true"
           />
+          <div
+            class="absolute inset-0 z-10 rounded-lg cursor-zoom-in"
+            aria-hidden="true"
+          ></div>
         </div>
       )
     }
 
-    <img src={img} class="rounded-lg w-auto" />
+    <img
+      src={img}
+      class="rounded-lg w-auto cursor-zoom-in"
+      data-zoom-image={img}
+      alt={`${title} preview`}
+    />
 
     <div class="">
       <h2 class="font-bold text-xl pt-3">

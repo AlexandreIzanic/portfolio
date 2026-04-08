@@ -18,5 +18,155 @@ const { title } = Astro.props;
   </head>
   <body>
     <slot />
+    <div class="media-lightbox" id="media-lightbox" aria-hidden="true">
+      <div class="media-lightbox__backdrop" data-lightbox-close></div>
+      <div class="media-lightbox__content" id="media-lightbox-content"></div>
+    </div>
+
+    <script>
+      const lightbox = document.getElementById("media-lightbox");
+      const lightboxContent = document.getElementById("media-lightbox-content");
+
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxContent) return;
+        lightbox.classList.remove("is-open");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxContent.innerHTML = "";
+        document.body.classList.remove("lightbox-open");
+      };
+
+      const openLightboxWithImage = (src, alt = "") => {
+        if (!lightbox || !lightboxContent || !src) return;
+        lightboxContent.innerHTML = "";
+
+        const image = document.createElement("img");
+        image.src = src;
+        image.alt = alt;
+        image.className = "media-lightbox__media";
+        image.loading = "eager";
+
+        image.addEventListener("click", () => {
+          closeLightbox();
+        });
+
+        lightboxContent.appendChild(image);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+      };
+
+      const openLightboxWithIframe = (src, title = "Media preview") => {
+        if (!lightbox || !lightboxContent || !src) return;
+        lightboxContent.innerHTML = "";
+
+        const frame = document.createElement("iframe");
+        frame.src = src;
+        frame.title = title;
+        frame.className = "media-lightbox__media media-lightbox__iframe";
+        frame.allow = "clipboard-read; clipboard-write";
+        frame.allowFullscreen = true;
+        frame.setAttribute("scrolling", "no");
+
+        lightboxContent.appendChild(frame);
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+      };
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        if (target.closest("[data-lightbox-close]")) {
+          closeLightbox();
+          return;
+        }
+
+        const imageTarget = target.closest("[data-zoom-image]");
+        if (imageTarget instanceof HTMLElement) {
+          event.preventDefault();
+          event.stopPropagation();
+          const imageSrc = imageTarget.getAttribute("data-zoom-image");
+          const imageAlt = imageTarget.getAttribute("alt") || "";
+          openLightboxWithImage(imageSrc, imageAlt);
+          return;
+        }
+
+        const iframeTarget = target.closest("[data-zoom-iframe-src]");
+        if (iframeTarget instanceof HTMLElement) {
+          event.preventDefault();
+          event.stopPropagation();
+          const frameSrc = iframeTarget.getAttribute("data-zoom-iframe-src");
+          const frameTitle = iframeTarget.getAttribute("data-zoom-title") || "Media preview";
+          openLightboxWithIframe(frameSrc, frameTitle);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+      });
+    </script>
   </body>
 </html>
+
+<style is:global>
+  .media-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .media-lightbox.is-open {
+    display: flex;
+  }
+
+  .media-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 12, 0.78);
+    backdrop-filter: blur(2px);
+    cursor: zoom-out;
+  }
+
+  .media-lightbox__content {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 92vw);
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .media-lightbox__media {
+    width: auto;
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 0.75rem;
+    object-fit: contain;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    cursor: zoom-out;
+  }
+
+  .media-lightbox__iframe {
+    width: min(1100px, 92vw);
+    height: min(70vh, 620px);
+    border: none;
+    background: #000;
+    cursor: default;
+  }
+
+  .cursor-zoom-in {
+    cursor: zoom-in;
+  }
+
+  body.lightbox-open {
+    overflow: hidden;
+  }
+ </style>

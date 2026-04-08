@@ -59,7 +59,12 @@ const sourcesImages = [
   </ul>
 
   <a href={href} class="w-full h-fit flex flex-col">
-    <img src={img} class="rounded-lg w-auto" loading="lazy" />
+    <img
+      src={img}
+      class="rounded-lg w-auto cursor-zoom-in"
+      data-zoom-image={img}
+      loading="lazy"
+    />
 
     <div class="grid grid-cols-2 gap-4 h-fit mt-4">
       {
@@ -68,7 +73,8 @@ const sourcesImages = [
             <img
               src={imageSrc.src}
               alt={`Upmail feature ${index + 1}`}
-              class="rounded-lg w-full h-full object-cover"
+              class="rounded-lg w-full h-full object-cover cursor-zoom-in"
+              data-zoom-image={imageSrc.src}
               loading="lazy"
               decoding="async"
             />
